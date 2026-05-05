@@ -1,64 +1,151 @@
-# Moving Object Detection and Trajectory Tracking
+# 🎯 Moving Object Detection & Trajectory Tracking
 
-This project implements a `VIBE Background Extractor (NumPy)` pipeline for moving object detection and trajectory tracking using Python, OpenCV, and NumPy.
+A computer vision project that detects and tracks moving objects in video using a custom implementation of the **ViBe background subtraction algorithm** and a **centroid-based tracking system**.
 
-## Project Overview
+---
 
-- `main.py` contains a VIBE-based foreground segmentation algorithm and a centroid tracker.
-- The pipeline reads a video file, computes a binary foreground mask, filters contours, and tracks object centroids over time.
-- The tracked objects are visualized with bounding boxes, IDs, and trajectory lines.
+## 📌 Overview
 
-## Features
+This project demonstrates a complete pipeline for **foreground segmentation, object detection, and trajectory tracking** using classical computer vision techniques.
 
-- ViBe background subtraction implementation
-- Contour filtering for object detection
-- Centroid-based tracker with object registration, disappearance handling, and trajectory visualization
-- Real-time display of both detected objects and the segmentation mask
+The system processes video frames to:
 
-## Requirements
+* Separate moving objects from the background
+* Detect valid object regions using contour filtering
+* Track object movement across frames
+* Visualize trajectories and object identities in real time
 
-- Python 3.10
-- `opencv-python` 4.13.0
-- `numpy` 2.2.6
+---
 
-## Installation
+## ⚙️ Key Features
 
-1. Create and activate a Python virtual environment in the project folder:
+* 🧠 **ViBe Background Subtraction (NumPy Implementation)**
+  Efficient pixel-level modeling for foreground detection.
 
-```powershell
-python -m venv myenv
-.\myenv\Scripts\Activate.ps1
+* 🎯 **Contour-Based Object Detection**
+  Filters noise using area, size, and aspect ratio constraints.
+
+* 📍 **Centroid Tracking Algorithm**
+
+  * Object ID assignment
+  * Distance-based matching
+  * Disappearance handling
+
+* 📈 **Trajectory Visualization**
+  Tracks and displays movement paths over time.
+
+* ⚡ **Optimized for Performance**
+
+  * Frame resizing (480×270)
+  * Frame skipping for real-time processing
+
+---
+
+## 🏗️ Project Structure
+
+```
+IPCV_Project/
+│── main.py              # Main pipeline (ViBe + tracking)
+│── Dataset/             # Input video files
+│── requirements.txt     # Dependencies
+│── README.md
 ```
 
-2. Install dependencies:
+---
 
-```powershell
+## 🧰 Tech Stack
+
+* **Language:** Python 3.10
+* **Libraries:**
+
+  * OpenCV (`opencv-python`)
+  * NumPy
+
+---
+
+## 📦 Installation
+
+1. Clone the repository:
+
+```bash
+git clone https://github.com/yourusername/moving-object-detection.git
+cd moving-object-detection
+```
+
+2. Create a virtual environment:
+
+```bash
+python -m venv myenv
+.\myenv\Scripts\activate
+```
+
+3. Install dependencies:
+
+```bash
 pip install -r requirements.txt
 ```
 
-## Usage
+---
 
-Use the default Dataset video or pass a custom video path with `--video`.
+## ▶️ Usage
 
-```powershell
+Run the program using:
+
+```bash
 python main.py
-python main.py --video Dataset\VIRAT_S_010204_05_000856_000890.mp4
 ```
 
-The script opens two windows:
+Or specify a custom video:
 
-- `Frame` for the annotated tracked video
-- `Mask` for the foreground segmentation output
+```bash
+python main.py --video Dataset\your_video.mp4
+```
 
-Press `Esc` to exit.
+---
 
-## Notes
+## 🖥️ Output
 
-- The script now automatically uses the first `.mp4` file found in the `Dataset` folder when `--video` is omitted.
-- If your dataset is stored elsewhere, pass the path with `python main.py --video <path>`.
-- The implementation uses a fixed frame size of 480x270 and skips every other frame for speed.
-- Before pushing to GitHub, do not include the local virtual environment folder `myenv/` or generated files such as `output.mp4`.
+The application opens two windows:
 
-## License
+* **Frame** → Displays tracked objects with bounding boxes, IDs, and trajectories
+* **Mask** → Shows foreground segmentation output
 
-This repository does not include an explicit license. Add one if you plan to publish or share the code.
+Press **ESC** to exit.
+
+---
+
+## 🧪 Implementation Details
+
+* Uses **ViBe algorithm** for adaptive background modeling
+* Applies **morphological operations** to clean segmentation masks
+* Uses **Euclidean distance matching** for object tracking
+* Maintains object trajectories using historical centroid data
+
+---
+
+## ⚠️ Limitations
+
+* May struggle with:
+
+  * Occlusion between objects
+  * Complex lighting changes
+  * Shadows and reflections
+
+These are known limitations of classical computer vision approaches.
+
+---
+
+## 🚀 Future Improvements
+
+* Integrate **YOLO-based object detection**
+* Use **DeepSORT for robust tracking**
+* Add **object counting and analytics**
+* Improve robustness to lighting and shadows
+
+---
+
+## 👤 Author
+
+**Deepak K**
+
+---
