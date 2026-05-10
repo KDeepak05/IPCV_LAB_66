@@ -1,22 +1,65 @@
-# Python
+# Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[cod]
 *$py.class
 
-# Virtual environment
-myenv/
+# C extensions
+*.so
 
-# Jupyter Notebook checkpoints
-.ipynb_checkpoints/
+# Distribution / packaging
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+share/python-wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+MANIFEST
 
-# VS Code
+# Virtual Environments
+venv/
+env/
+.env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# Project Specific Directories
+# Ignore dataset videos (they are too large for Git)
+src/dataset/**/*.mp4
+src/dataset/**/*.avi
+src/dataset/**/*.mkv
+src/dataset/**/*.mov
+
+# Ignore generated outputs (screenshots, saved videos, graphs)
+src/outputs/**/*.mp4
+src/outputs/**/*.png
+src/outputs/**/*.jpg
+src/outputs/**/*.csv
+src/outputs/graphs/*
+src/outputs/screenshots/*
+src/outputs/videos/*
+
+# Ignore the generated bundled code text file
+src/project_code.txt
+src/test_pipeline.py
+src/generate_test_video.py
+src/*.mp4
+
+# IDEs and Editors
 .vscode/
-
-# Output files
-output.mp4
-
-# macOS
+.idea/
+*.swp
+*.swo
 .DS_Store
-
-# Windows
-Thumbs.db
